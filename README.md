@@ -1,5 +1,5 @@
 ### Date created
-05/28/2020
+May 28, 2020
 
 ### Project Title
 Analyze the bikesharing data in New York City, Chicago and Washington
