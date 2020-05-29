@@ -156,6 +156,7 @@ def user_stats(df, print_dict):
     return print_dict
 
 def main():
+    """Create interactive report by allowing users to choose if they want to contiue"""
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
