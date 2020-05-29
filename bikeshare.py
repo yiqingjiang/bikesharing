@@ -22,8 +22,8 @@ def get_filters():
         city = input('Please input the city you want to explore (chicago, new york city, washington): ').lower()
         if city not in ('chicago','new york city', 'washington' ):
             print("Sorry, the input is invalid. Enter again:")
-        else: 
-            valid = False 
+        else:
+            valid = False
     # TO DO: get user input for month (all, january, february, ... , june)
     month = input('Please input the month you want to explore (all or specific month in lower case): ').lower()
 
@@ -55,10 +55,10 @@ def load_data(city, month, day):
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month) + 1
         df = df[df['month'] == month]
-    
+
     if day != 'all':
         df = df[df['day_of_week'] == day.title()]
-    
+
     return df
 
 
@@ -75,13 +75,12 @@ def time_stats(df, print_dict):
     popular_day = df['day_of_week'].mode()[0]
 
     # TO DO: display the most common start hour
-    df['hour'] = df['Start Time'].dt.hour
     popular_hour = df['hour'].mode()[0]
 
     print_dict['Most Common Month'] = popular_month
     print_dict['Most Common Day'] = popular_day
-    print_dict['Most Common Hour'] = popular_hour                 
-   
+    print_dict['Most Common Hour'] = popular_hour
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
     return print_dict
@@ -100,14 +99,14 @@ def station_stats(df, print_dict):
 
     # TO DO: display most frequent combination of start station and end station trip
     popular_com_station = df.groupby(['Start Station', 'End Station']).size().idxmax()
-    
+
     print_dict['Most Commonly used Start Station'] = popular_start_station
     print_dict['Most Commonly used End Station'] = popular_end_station
     print_dict['Most frequent combination of start station and end station trip'] = popular_com_station
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
     return print_dict
 
 def trip_duration_stats(df, print_dict):
@@ -118,17 +117,17 @@ def trip_duration_stats(df, print_dict):
 
     # TO DO: display total travel time
     total_time = df['Trip Duration'].sum()
-    
+
     # TO DO: display mean travel time
     mean_time = df['Trip Duration'].mean()
-    
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
-    print_dict["Total travel time in seconds"] = total_time          
+
+    print_dict["Total travel time in seconds"] = total_time
     print_dict["Mean travel time in seconds"] = mean_time
-    return print_dict               
-                    
+    return print_dict
+
 def user_stats(df, print_dict):
     """Displays statistics on bikeshare users."""
 
@@ -137,10 +136,10 @@ def user_stats(df, print_dict):
 
     # TO DO: Display counts of user types
     count_user_types = df['User Type'].value_counts()
-    
+
     # TO DO: Display counts of gender
     count_genders = df['Gender'].value_counts()
-    
+
 
     # TO DO: Display earliest, most recent, and most common year of birth
     popular_birthyear = df['Birth Year'].mode()
@@ -153,20 +152,20 @@ def user_stats(df, print_dict):
     print_dict["The most common year of birth"] = int(popular_birthyear)
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
-    
+
     return print_dict
 
 def main():
     while True:
         city, month, day = get_filters()
-        df = load_data(city, month, day)             
-        print_dict = {}        
-        
+        df = load_data(city, month, day)
+        print_dict = {}
+
         time_stats(df, print_dict)
         station_stats(df, print_dict)
         trip_duration_stats(df, print_dict)
         user_stats(df, print_dict)
-        
+
         for k, (key, value) in enumerate(print_dict.items()):
             if k > 0 and k % 5 == 0:
                 more_data = input('\nWould you like to continue? Enter yes or no.\n')
