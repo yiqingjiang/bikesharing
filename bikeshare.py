@@ -31,6 +31,7 @@ def get_filters():
     day = input('Please input the weekday you want to explore (all or specific day in lower case): ').lower()
 
     print('-'*40)
+
     return city, month, day
 
 
@@ -83,6 +84,7 @@ def time_stats(df, print_dict):
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
+
     return print_dict
 
 def station_stats(df, print_dict):
@@ -126,6 +128,7 @@ def trip_duration_stats(df, print_dict):
 
     print_dict["Total travel time in seconds"] = total_time
     print_dict["Mean travel time in seconds"] = mean_time
+
     return print_dict
 
 def user_stats(df, print_dict):
