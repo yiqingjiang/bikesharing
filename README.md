@@ -1,15 +1,13 @@
 ### Date created
-Include the date you created this project and README file.
+May 28, 2020
 
 ### Project Title
-Replace the Project Title
+Analyze the bikesharing data in New York City, Chicago and Washington
 
 ### Description
-Describe what your project is about and what it does
+This project is used to analyze the bikesharing data in three cities in terms of time, user profile, customer behavior etc. Users could specify the city, month and weekday they want to analyze.
 
 ### Files used
-Include the files used
+chicago.csv, new_york_city.csv, washington.csv, bikesharing.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
